@@ -1,6 +1,12 @@
-// Variables
-$familiaFuente: 'Montserrat', sans-serif;
-$colorCorpPrincipal: #bd0202;
+@import "variables";
+
+li, ul, a{
+    text-decoration: none;
+    color: map-get($map: $colorsCorp, $key: colorCorpPri);
+    font-size: 18px;
+    font-family: $familiaFuente;
+    font-weight: 400;
+}
 
 /*estilos de formulario*/
 

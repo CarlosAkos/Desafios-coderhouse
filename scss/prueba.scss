@@ -4,10 +4,8 @@
 }
 
 @import "formulario";
-
-// Variables
-$familiaFuente: 'Montserrat', sans-serif;
-$colorCorpPrincipal: #bd0202;
+@import "portafolio";
+@import "variables";
 
 /*ajustes de clases de bootstrap*/
 .navbar-nav{
@@ -23,21 +21,18 @@ h1{
 }
 
 h2{
+    @extend h1;
     font-size: 35px;
-    font-family: $familiaFuente;
-    font-weight: 700;
 }
 
 h3{
+    @extend h1;
     font-size: 25px;
-    font-family: $familiaFuente;
-    font-weight: 700;
 }
 
 h4{
+    @extend h1;
     font-size: 20px;
-    font-family: $familiaFuente;
-    font-weight: 700;
 }
 
 p{
@@ -47,38 +42,35 @@ p{
 }
 
 /*estilos generales*/
-.buttonWhite{
+.button{
     border-radius: 5px;
     border: none;
-    background-color: white;
     padding: 10px 15px 10px 15px;
     width: fit-content;
     font-size: 16px;
     font-family: $familiaFuente;
     font-weight: 500;
+}
+.buttonWhite{
+    @extend .button;
+    background-color: map-get($map: $colorsCorp, $key: colorCorpSec);
     transition-duration: 0.1s;
         &:hover{
             background-color: rgba(0,0,0,0.0);
-            border: $colorCorpPrincipal solid 2px;
-            color: $colorCorpPrincipal;
+            border: map-get($map: $colorsCorp, $key: colorCorpPri) solid 2px;
+            color: map-get($map: $colorsCorp, $key: colorCorpPri);
         }
 }
 
 .buttonRed{
-    border-radius: 5px;
-    color: white;
-    background-color: $colorCorpPrincipal;
-    border: none;
-    padding: 10px 15px 10px 15px;
-    width: fit-content;
-    font-size: 16px;
-    font-family: $familiaFuente;
-    font-weight: 500;
+    @extend .button;
+    color: map-get($map: $colorsCorp, $key: colorCorpSec);
+    background-color: map-get($map: $colorsCorp, $key: colorCorpPri);
     transition-duration: 0.1s;
         &:hover{
             background-color: rgba(0,0,0,0.0);
-            border: $colorCorpPrincipal solid 2px;
-            color: $colorCorpPrincipal;
+            border: map-get($map: $colorsCorp, $key: colorCorpSec) solid 2px;
+            color: map-get($map: $colorsCorp, $key: colorCorpSec);
         }
 }
 
@@ -92,7 +84,7 @@ nav{
             font-family: $familiaFuente;
             font-weight: 500;
             font-size: 16px;
-            color:white;
+            color:map-get($map: $colorsCorp, $key: colorCorpSec);
             text-decoration: none;            
         }
 }
@@ -109,7 +101,7 @@ header{
 }
 
 footer{
-    border-top: solid $colorCorpPrincipal 5px;
+    border-top: solid map-get($map: $colorsCorp, $key: colorCorpPri) 5px;
     display: flex;
     padding: 50px;
     justify-content: space-between;
@@ -119,7 +111,7 @@ footer{
         }
         li, ul, a{
             text-decoration: none;
-            color: $colorCorpPrincipal;
+            color: map-get($map: $colorsCorp, $key: colorCorpPri);
             font-size: 18px;
             font-family: $familiaFuente;
             font-weight: 400;
@@ -127,8 +119,7 @@ footer{
 }
 
 #logo{
-    width: 10%;
-    min-width: 70px;
+    @include sizes(10%, 70px);
 }
 
 .hero-section-first{
@@ -154,8 +145,7 @@ footer{
 
 .first-img-section{
     max-width: 500px;
-    min-width: 250px;
-    width: 25%;
+    @include sizes(25%, 250px);
 }
 
 .seccion-fondo-negro{
@@ -202,8 +192,7 @@ footer{
 
 .tarjetas-servicios{
     text-align: center;
-    width: 30%;
-    min-width: 250px;
+    @include sizes(30%, 250px);
 
 }
 
@@ -233,87 +222,6 @@ footer{
     flex-direction: column;
     justify-content: center;
     width: 50%;
-}
-
-/*estilos para página portafolio*/
-.seccion-fondo-negro-portafolio{
-    padding: 25px;
-     background-color: black;
-    color: white;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-}
-
-.galeria{
-    margin:15px;
-    width: 100%;
-    height: 800px;
-    display: grid;
-    grid-template-areas: 
-    "schuhe schuhe pfeliz"
-    "schuhe schuhe codigolab"
-    "remanso fmarketing fmarketing"
-    "mpainting fmarketing fmarketing";
-    grid-template-rows:25% 25% 25% 25%;
-    grid-template-columns:1fr 1fr 1fr;
-    gap: 1%;
-}
-
-#schuhe{
-    grid-area: schuhe;
-    background-image: url(../img/portada-app-zapatos.png);
-    background-size: cover;
-    background-position: center;
-}
-
-#pfeliz{
-    grid-area: pfeliz;
-    background-image: url(../img/proyecto-elperezosofeliz.png);
-    background-size: cover;
-    background-position: center;
-}
-
-#codigolab{
-    grid-area: codigolab;
-    background-image: url(../img/proyecto-codigolab.png);
-    background-size: cover;
-    background-position: center;
-}
-
-#remanso{
-    grid-area: remanso;
-    background-image: url(../img/proyecto-remansolascondes.png);
-    background-size: cover;
-    background-position: center;
-}
-
-#mpainting{
-    grid-area: mpainting;
-    background-image: url(../img/proyecto-mattepaiting.png);
-    background-size: cover;
-    background-position: center;
-}
-
-#fmarketing{
-    grid-area: fmarketing;
-    background-image: url(../img/proyecto-flavoredmarketing.png);
-    background-size: cover;
-    background-position: center;
-}
-
-#fmarketing img{
-    width: 100%;
-}
-
-/* tranformaciones */
-.elementodegaleria{
-    filter: blur(1px) grayscale(100%);
-    transition-duration: 0.5s;
-}
-
-.elementodegaleria:hover{
-    filter: blur(0) grayscale(0%);
 }
 
 /* Animaciones */
@@ -401,12 +309,12 @@ footer{
     
     #first-img-carlos{
         width: 100%;
-        border-bottom: $colorCorpPrincipal solid 4px;
+        border-bottom: map-get($map: $colorsCorp, $key: colorCorpPri) solid 4px;
     }
 
     .first-img-section{
         width: 100%;
-        border-bottom: $colorCorpPrincipal solid 4px;
+        border-bottom: map-get($map: $colorsCorp, $key: colorCorpPri) solid 4px;
     }
 
     .seccion-fondo-blanco{
@@ -482,30 +390,5 @@ footer{
 
     .imagenes-seccion-sobremi{
         width: 100%;
-    }
-
-    /* estilos de galeria */
-    .elementodegaleria{
-        filter: blur(0) grayscale(0);
-    }
-    .galeria{
-        margin:25px;
-        width: 100%;
-        height: 1080px;
-        display: grid;
-        grid-template-areas: 
-        "schuhe"
-        "pfeliz"
-        "codigolab"
-        "remanso"
-        "fmarketing"
-        "mpainting";
-        grid-template-rows:16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
-        grid-template-columns:100%;
-        gap: 5px;
-    }
-
-    .seccion-fondo-negro-portafolio{
-        text-align: center;
     }
 }
